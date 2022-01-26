@@ -1,7 +1,7 @@
 import numpy
 import matplotlib.pyplot
 
-backLegSensorValues = numpy.load("data/backLegSensorValues.npy")
+backLegSensorValues = numpy.load("datls/backLegSensorValues.npy")
 FrontLegSensorValues = numpy.load("data/FrontLegSensorValues.npy")
 
 matplotlib.pyplot.plot(backLegSensorValues, label = "Back leg", linewidth = 4)
