@@ -47,7 +47,7 @@ class NEURON:
     def Is_Hidden_Neuron(self):
 
         return self.type == c.HIDDEN_NEURON
-
+    
     def Is_Motor_Neuron(self):
 
         return self.type == c.MOTOR_NEURON
@@ -56,9 +56,14 @@ class NEURON:
         
         self.Set_Value(pyrosim.Get_Touch_Sensor_Value_For_Link(self.Get_Link_Name()))
     
-    def Update_Hidden_Or_Motor_Neuron(self):
-        self.Set_Value(math.pi/4.0)
-
+    def Update_Hidden_Or_Motor_Neuron(self, neurons, synapses):
+        self.Set_Value(0)
+        for key in synapses:
+            if key[1] == self.Get_Name():
+                self.Allow_Presynaptic_Neuron_To_Influence_Me(synapses[key].Get_Weight(), neurons[key[0]].Get_Value())
+        self.Threshold()
+    def Allow_Presynaptic_Neuron_To_Influence_Me(self, currSynWeight, neuronVal):
+        self.Add_To_Value(currSynWeight * neuronVal)
     def Print(self):
 
         # self.Print_Name()
