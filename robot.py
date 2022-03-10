@@ -34,6 +34,14 @@ class ROBOT:
         self.nn.Update()
         self.nn.Print()
 
+    def Get_Fitness(self):
+        stateOfLinkZero = p.getLinkState(self.robot,0)
+        positionOfLinkZero = stateOfLinkZero[0]
+        xCoordinateOfLinkZero = positionOfLinkZero[0]
+        file_in = open("fitness.txt", "w")
+        file_in.write(str(xCoordinateOfLinkZero))
+        file_in.close()
+        exit()
 
     def __init__(self):
         self.robot = p.loadURDF("body.urdf")
@@ -42,7 +50,6 @@ class ROBOT:
         
         self.Prepare_To_Sense()
         self.Prepare_To_Act()
-
 
 
 
