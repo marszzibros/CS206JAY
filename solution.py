@@ -6,20 +6,23 @@ import os
 class SOLUTION:
     def __init__(self):
         self.weights = np.random.rand(3,2) * 2 - 1
+
+
+    def Evaluate(self, directOrGUI):
         self.Create_World()
         self.Generate_Body()
         self.Generate_Brain()
+        os.system("python simulate.py " + directOrGUI)
 
-    def Evaluate(self):
-        os.system("python simulate.py")
-        file_in.open("fitness.txt","r")
+        file_in = open("fitness.txt","r")
         self.fitness = float(file_in.readline())
         file_in.close()
+
     def Mutate(self):
         
         randomRow = random.randint(1,3)
         randomColumn = random.randint(1,2)
-        self.weights[randomRow][randomColumn] = random.random() * 2 - 1
+        self.weights[randomRow - 1][randomColumn - 1] = random.random() * 2 - 1
 
     def Generate_Body(self):
         pyrosim.Start_URDF("body.urdf")
