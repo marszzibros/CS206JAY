@@ -5,3 +5,4 @@ back_frequency = 10
 back_phaseOffset = numpy.pi / 2.6
 
 numberOfGenerations = 10
+populationSize = 10

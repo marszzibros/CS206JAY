@@ -2,21 +2,28 @@ import numpy as np
 import pyrosim.pyrosim as pyrosim
 import random
 import os
+import time
 
 class SOLUTION:
-    def __init__(self):
+    def __init__(self, availableID):
         self.weights = np.random.rand(3,2) * 2 - 1
+        self.myID = availableID
+    def Set_ID(self, assignedID):
+        self.myID = assignedID
 
-
-    def Evaluate(self, directOrGUI):
+    def Start_Simulation(self, directOrGUI):
         self.Create_World()
         self.Generate_Body()
         self.Generate_Brain()
-        os.system("python simulate.py " + directOrGUI)
-
-        file_in = open("fitness.txt","r")
+        os.system("start /B python simulate.py " + directOrGUI + " " + str(self.myID))
+    def Wait_For_Simulation_To_End(self):
+        while not os.path.exists("fitness" + str(self.myID) + ".txt"):
+            time.sleep(0.01)
+        file_in = open("fitness" + str(self.myID) + ".txt","r")
         self.fitness = float(file_in.readline())
+        print(self.fitness)
         file_in.close()
+        os.system("del fitness" + str(self.myID) + ".txt")
 
     def Mutate(self):
         
@@ -34,7 +41,7 @@ class SOLUTION:
         pyrosim.End()
 
     def Generate_Brain(self):
-        pyrosim.Start_NeuralNetwork("brain.nndf")
+        pyrosim.Start_NeuralNetwork("brain" + str(self.myID) + ".nndf")
         pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso")
         pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "BackLeg")
         pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "FrontLeg")
