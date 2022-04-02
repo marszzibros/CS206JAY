@@ -48,7 +48,7 @@ class PARALLEL_HILL_CLIMBER:
     def Select(self):
         for i in range(0,c.populationSize):
             if self.parents[i].fitness > self.children[i].fitness:
-                self.parents[i] =  self.children[i]
+                self.parents[i] =  copy.deepcopy(self.children[i])
     def Print(self):
         print()
         for i in range(0,c.populationSize):
@@ -60,5 +60,6 @@ class PARALLEL_HILL_CLIMBER:
         for i in range(0,c.populationSize):
             if self.parents[i].fitness < lowest:
                 solution = self.parents[i]
+                lowest = solution.fitness
         solution.Start_Simulation("GUI")
         
