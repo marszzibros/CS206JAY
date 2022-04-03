@@ -24,13 +24,13 @@ class SIMULATION:
         p.disconnect()
 
     def Run(self):
-        for t in range(0,1000):
+        for t in range(0,2000):
             p.stepSimulation()
             self.robot.Sense(t)
             self.robot.Think()
             self.robot.Act(t)
             if self.directOrGUI == "GUI":
-                time.sleep(1/500)
+                time.sleep(1/1000)
     def Get_Fitness(self):
         self.robot.Get_Fitness()
 

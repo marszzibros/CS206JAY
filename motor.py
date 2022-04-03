@@ -13,7 +13,7 @@ class MOTOR:
         jointName = self.jointName,
         controlMode = p.POSITION_CONTROL,
         targetPosition = desiredAngle,
-        maxForce = 50)
+        maxForce = 100)
 
     def __init__(self, jointName):
         self.amplitude = c.back_amplitude
@@ -21,4 +21,4 @@ class MOTOR:
         self.offset = c.back_phaseOffset
 
         self.jointName = jointName
-        self.motorValues = numpy.zeros(1000)
+        self.motorValues = numpy.zeros(2000)

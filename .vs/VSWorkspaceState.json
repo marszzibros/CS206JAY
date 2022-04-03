@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\pyrosim",
+    "\\pyrosim\\__pycache__"
   ],
   "SelectedNode": "\\search.py",
   "PreviewInSolutionExplorer": false
