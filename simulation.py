@@ -19,7 +19,7 @@ class SIMULATION:
 
         self.world = WORLD()
         self.robot = ROBOT(solutionID)
-
+          
     def __del__(self):
         p.disconnect()
 

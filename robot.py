@@ -8,6 +8,7 @@ import pyrosim.pyrosim as pyrosim
 from pyrosim.neuralNetwork import NEURAL_NETWORK
 import pybullet as p
 import constants as c
+import numpy as np
 
 
 class ROBOT:
@@ -32,9 +33,9 @@ class ROBOT:
                 jointName = self.nn.Get_Motor_Neurons_Joint(neuronName)
                 if int(neuronName) >= 10 and int(neuronName) <= 13:
                     desiredAngle = self.nn.Get_Value_Of(neuronName) * c.motorJointDownRange
+
                 else:
                     desiredAngle = self.nn.Get_Value_Of(neuronName) * c.motorJointUpRange
-
                 self.motor[jointName].Set_Value(desiredAngle, self.robot)
                 
     def Think(self):
@@ -57,6 +58,7 @@ class ROBOT:
         self.nn = NEURAL_NETWORK("brain" + str(self.solutionID) + ".nndf")
         pyrosim.Prepare_To_Simulate(self.robot)
         os.system("del brain" + str(self.solutionID) + ".nndf")
+
         self.Prepare_To_Sense()
         self.Prepare_To_Act()
 
