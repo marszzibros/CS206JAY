@@ -119,27 +119,49 @@ class SOLUTION:
         pyrosim.Send_Motor_Neuron( name = 13 , jointName = "BackRightUpLeg_BackRightDownLeg")
 
 
+        #for currentColumn in range(0,c.numHiddenNeurons):
+        #    for currentRow in range(0,c.numSensorNeurons):
+        #        if (currentRow == 0 or currentRow == 1) and currentColumn == 0:
+        #            pyrosim.Send_Synapse(sourceNeuronName = currentRow, targetNeuronName = currentColumn + 4, weight = self.sensorWeights[currentRow][currentColumn])
+        #        elif (currentRow == 0 or currentRow == 1) and currentColumn == 1:
+        #            pyrosim.Send_Synapse(sourceNeuronName = currentRow, targetNeuronName = currentColumn + 4, weight = self.sensorWeights[currentRow][currentColumn] * -1)
+        #        elif (currentRow == 2 or currentRow == 3) and currentColumn == 1:
+        #            pyrosim.Send_Synapse(sourceNeuronName = currentRow, targetNeuronName = currentColumn + 4, weight = self.sensorWeights[currentRow][currentColumn])
+        #        elif (currentRow == 2 or currentRow == 3) and currentColumn == 0:
+        #            pyrosim.Send_Synapse(sourceNeuronName = currentRow, targetNeuronName = currentColumn + 4, weight = self.sensorWeights[currentRow][currentColumn] * -1)
+
+        #for currentColumn in range(0,c.numMotorNeurons):
+        #    for currentRow in range(0,c.numHiddenNeurons):
+        #        if currentRow == 0 and (currentColumn == 0 or currentColumn == 1 or currentColumn == 4 or currentColumn == 5):
+        #            pyrosim.Send_Synapse(sourceNeuronName = currentRow + 4, targetNeuronName = currentColumn + 6, weight = self.hiddenWeights[currentRow][currentColumn])
+        #        elif currentRow == 0 and (currentColumn == 2 or currentColumn == 3 or currentColumn == 6 or currentColumn == 7):
+        #            pyrosim.Send_Synapse(sourceNeuronName = currentRow + 4, targetNeuronName = currentColumn + 6, weight = self.hiddenWeights[currentRow][currentColumn] * -1)
+        #        elif currentRow == 1 and (currentColumn == 2 or currentColumn == 3 or currentColumn == 6 or currentColumn == 7):
+        #            pyrosim.Send_Synapse(sourceNeuronName = currentRow + 4, targetNeuronName = currentColumn + 6, weight = self.hiddenWeights[currentRow][currentColumn])
+        #        elif currentRow == 1 and (currentColumn == 0 or currentColumn == 1 or currentColumn == 4 or currentColumn == 5):
+        #            pyrosim.Send_Synapse(sourceNeuronName = currentRow + 4, targetNeuronName = currentColumn + 6, weight = self.hiddenWeights[currentRow][currentColumn] * -1)
+        
         for currentColumn in range(0,c.numHiddenNeurons):
             for currentRow in range(0,c.numSensorNeurons):
-                if (currentRow == 0 or currentRow == 1) and currentColumn == 0:
+                if (currentRow == 0 or currentRow == 3) and currentColumn == 0:
                     pyrosim.Send_Synapse(sourceNeuronName = currentRow, targetNeuronName = currentColumn + 4, weight = self.sensorWeights[currentRow][currentColumn])
-                elif (currentRow == 0 or currentRow == 1) and currentColumn == 1:
+                elif (currentRow == 2 or currentRow == 1) and currentColumn == 1:
                     pyrosim.Send_Synapse(sourceNeuronName = currentRow, targetNeuronName = currentColumn + 4, weight = self.sensorWeights[currentRow][currentColumn] * -1)
-                elif (currentRow == 2 or currentRow == 3) and currentColumn == 1:
+                elif (currentRow == 2 or currentRow == 1) and currentColumn == 1:
                     pyrosim.Send_Synapse(sourceNeuronName = currentRow, targetNeuronName = currentColumn + 4, weight = self.sensorWeights[currentRow][currentColumn])
-                elif (currentRow == 2 or currentRow == 3) and currentColumn == 0:
+                elif (currentRow == 0 or currentRow == 3) and currentColumn == 0:
                     pyrosim.Send_Synapse(sourceNeuronName = currentRow, targetNeuronName = currentColumn + 4, weight = self.sensorWeights[currentRow][currentColumn] * -1)
 
         for currentColumn in range(0,c.numMotorNeurons):
             for currentRow in range(0,c.numHiddenNeurons):
-                if currentRow == 0 and (currentColumn == 0 or currentColumn == 1 or currentColumn == 4 or currentColumn == 5):
+                if currentRow == 0 and (currentColumn == 0 or currentColumn == 3 or currentColumn == 4 or currentColumn == 7):
                     pyrosim.Send_Synapse(sourceNeuronName = currentRow + 4, targetNeuronName = currentColumn + 6, weight = self.hiddenWeights[currentRow][currentColumn])
-                elif currentRow == 0 and (currentColumn == 2 or currentColumn == 3 or currentColumn == 6 or currentColumn == 7):
-                    pyrosim.Send_Synapse(sourceNeuronName = currentRow + 4, targetNeuronName = currentColumn + 6, weight = self.hiddenWeights[currentRow][currentColumn] * -2)
-                elif currentRow == 1 and (currentColumn == 2 or currentColumn == 3 or currentColumn == 6 or currentColumn == 7):
+                elif currentRow == 0 and (currentColumn == 1 or currentColumn == 2 or currentColumn == 5 or currentColumn == 6):
+                    pyrosim.Send_Synapse(sourceNeuronName = currentRow + 4, targetNeuronName = currentColumn + 6, weight = self.hiddenWeights[currentRow][currentColumn] * -1)
+                elif currentRow == 1 and (currentColumn == 1 or currentColumn == 2 or currentColumn == 5 or currentColumn == 6):
                     pyrosim.Send_Synapse(sourceNeuronName = currentRow + 4, targetNeuronName = currentColumn + 6, weight = self.hiddenWeights[currentRow][currentColumn])
-                elif currentRow == 1 and (currentColumn == 0 or currentColumn == 1 or currentColumn == 4 or currentColumn == 5):
-                    pyrosim.Send_Synapse(sourceNeuronName = currentRow + 4, targetNeuronName = currentColumn + 6, weight = self.hiddenWeights[currentRow][currentColumn] * -2)
+                elif currentRow == 1 and (currentColumn == 0 or currentColumn == 3 or currentColumn == 4 or currentColumn == 7):
+                    pyrosim.Send_Synapse(sourceNeuronName = currentRow + 4, targetNeuronName = currentColumn + 6, weight = self.hiddenWeights[currentRow][currentColumn] * -1)
 
         pyrosim.End()
 

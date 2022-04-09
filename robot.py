@@ -32,10 +32,10 @@ class ROBOT:
             if self.nn.Is_Motor_Neuron(neuronName):
                 jointName = self.nn.Get_Motor_Neurons_Joint(neuronName)
                 if int(neuronName) >= 10 and int(neuronName) <= 13:
-                    desiredAngle = self.nn.Get_Value_Of(neuronName) * c.motorJointDownRange
+                    desiredAngle = self.nn.Get_Value_Of(neuronName) * c.motorJointDownRange * -1
 
                 else:
-                    desiredAngle = self.nn.Get_Value_Of(neuronName) * c.motorJointUpRange
+                    desiredAngle = self.nn.Get_Value_Of(neuronName) * c.motorJointUpRange * -1
                 self.motor[jointName].Set_Value(desiredAngle, self.robot)
                 
     def Think(self):

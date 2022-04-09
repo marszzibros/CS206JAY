@@ -35,6 +35,9 @@ class NEURAL_NETWORK:
     def Get_Value_Of(self, neuronName):
         return self.neurons[neuronName].Get_Value()
 
+    def Set_Value_Of(self, neuronName, value):
+        self.neurons[neuronName].Set_Value(value)
+
     def Is_Motor_Neuron(self,neuronName):
         if self.neurons[neuronName].Is_Motor_Neuron():
             return True

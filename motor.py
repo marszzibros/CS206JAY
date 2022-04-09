@@ -15,6 +15,7 @@ class MOTOR:
         targetPosition = desiredAngle,
         maxForce = 100)
 
+
     def __init__(self, jointName):
         self.amplitude = c.back_amplitude
         self.frequency = c.back_frequency
