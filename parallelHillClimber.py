@@ -62,4 +62,5 @@ class PARALLEL_HILL_CLIMBER:
                 solution = self.parents[i]
                 lowest = solution.fitness
         solution.Start_Simulation("GUI")
+        os.system("del tmpPosition*.txt")
         
