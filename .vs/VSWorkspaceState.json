@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\data"
   ],
-  "SelectedNode": "\\robot.py",
+  "SelectedNode": "\\plotFitnessValues.py",
   "PreviewInSolutionExplorer": false
 }

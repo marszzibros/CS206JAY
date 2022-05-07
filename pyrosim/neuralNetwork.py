@@ -49,13 +49,13 @@ class NEURAL_NETWORK:
 
     def Print(self):
 
-        self.Print_Sensor_Neuron_Values()
+        return self.Print_Sensor_Neuron_Values()
 
-        self.Print_Hidden_Neuron_Values()
+        #self.Print_Hidden_Neuron_Values()
 
-        self.Print_Motor_Neuron_Values()
+        #self.Print_Motor_Neuron_Values()
 
-        print("")
+        #print("")
 
 # ---------------- Private methods --------------------------------------
 
@@ -94,16 +94,12 @@ class NEURAL_NETWORK:
         return "synapse" in line
 
     def Print_Sensor_Neuron_Values(self):
-
-        print("sensor neuron values: " , end = "" )
-
+        Sensor_Neuron_Values = []
         for neuronName in sorted(self.neurons):
 
             if self.neurons[neuronName].Is_Sensor_Neuron():
-
-                self.neurons[neuronName].Print()
-
-        print("")
+                Sensor_Neuron_Values.append(self.neurons[neuronName].Print())
+        return Sensor_Neuron_Values
 
     def Print_Hidden_Neuron_Values(self):
 

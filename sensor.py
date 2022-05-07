@@ -1,5 +1,6 @@
 import numpy
 import pyrosim.pyrosim as pyrosim
+import constants as c
 
 class SENSOR:
     def Get_Value(self, t):
@@ -10,4 +11,4 @@ class SENSOR:
 
     def __init__(self, linkName):
         self.linkName = linkName
-        self.values = numpy.zeros(2000)
+        self.values = numpy.zeros(c.steps)

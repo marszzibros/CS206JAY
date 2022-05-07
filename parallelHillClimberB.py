@@ -1,19 +1,22 @@
 
-from solution import SOLUTION
+from solutionB import SOLUTION_B
 import copy
 import constants as c
 import time
+import numpy as np
 import os
 
-class PARALLEL_HILL_CLIMBER:
+class PARALLEL_HILL_CLIMBER_B:
     def __init__(self):
         os.system("del brain*.nndf")
         os.system("del fitness*.txt")
         #self.parent = SOLUTION()
+        self.dataB = np.zeros((c.populationSize,c.numberOfGenerations))
         self.nextAvailableID = 0
+        self.generation = 0
         self.parents = dict()
         for i in range(0,c.populationSize):
-            self.parents[i] = SOLUTION(self.nextAvailableID)
+            self.parents[i] = SOLUTION_B(self.nextAvailableID)
             self.nextAvailableID += 1
 
 
@@ -29,7 +32,7 @@ class PARALLEL_HILL_CLIMBER:
         self.Select()
     def Evaluate(self, solutions):
         for i in range(0,c.populationSize):
-            solutions[i].Start_Simulation("DIRECT")
+            solutions[i].Start_Simulation("DIRECT", "B")
         for i in range(0,c.populationSize):
             solutions[i].Wait_For_Simulation_To_End()
         
@@ -50,10 +53,12 @@ class PARALLEL_HILL_CLIMBER:
             if self.parents[i].fitness > self.children[i].fitness:
                 self.parents[i] =  copy.deepcopy(self.children[i])
     def Print(self):
-        print()
+        #print()
         for i in range(0,c.populationSize):
-            print(str(self.parents[i].fitness) + " " + str(self.children[i].fitness))
-        print()
+            self.dataB[i][self.generation] = self.parents[i].fitness
+        #    print(str(self.parents[i].fitness) + " " + str(self.children[i].fitness))
+        self.generation += 1
+        #print()
     def Show_Best(self):
         lowest = 10000000
         
@@ -61,6 +66,6 @@ class PARALLEL_HILL_CLIMBER:
             if self.parents[i].fitness < lowest:
                 solution = self.parents[i]
                 lowest = solution.fitness
-        solution.Start_Simulation("GUI")
-        os.system("del tmpPosition*.txt")
+        solution.Start_Simulation("GUI", "B")
+        np.save("data/dataB_text.npy", self.dataB)
         

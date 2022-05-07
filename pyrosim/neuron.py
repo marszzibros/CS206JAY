@@ -70,7 +70,7 @@ class NEURON:
 
         # self.Print_Type()
 
-        self.Print_Value()
+        return self.Print_Value()
 
         # print("")
 
@@ -112,7 +112,7 @@ class NEURON:
 
     def Print_Value(self):
 
-       print(self.value , " " , end="" )
+       return self.value
 
     def Search_For_Joint_Name(self,line):
 
